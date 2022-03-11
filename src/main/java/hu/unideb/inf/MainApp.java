@@ -12,19 +12,21 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLScene.fxml"));
-        Scene scene = new Scene(loader.load());
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
+        Scene loginScene = new Scene(loader.load());
+        loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
+        Scene loggedIn = new Scene(loader.load());
         ((FXMLSceneController)loader.getController()).setModel(new Model());
-        stage.setTitle("Felhasználó regisztrálás");
-        stage.setScene(scene);
+        stage.setTitle("Bejelentkezés :(");
+        stage.setScene(loginScene);
         stage.show();
         /*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+        Scene loginScene = new Scene(root);
+        loginScene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
+        stage.setScene(loginScene);
         stage.show();*/
     }
 

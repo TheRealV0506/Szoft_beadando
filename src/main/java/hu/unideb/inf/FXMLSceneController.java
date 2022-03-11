@@ -3,7 +3,6 @@ package hu.unideb.inf;
 import hu.unideb.inf.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 public class FXMLSceneController {
@@ -12,6 +11,12 @@ public class FXMLSceneController {
     public void setModel(Model model) {
         this.model = model;
     }
+
+    @FXML
+    private Label username;
+
+    @FXML
+    private Label password;
 
     @FXML
     private Label birthDayLabel;
@@ -23,12 +28,12 @@ public class FXMLSceneController {
     private Label placeLabel;
 
     @FXML
-    private Label helloLabel;
-
-    @FXML
     private Label nameLabel;
 
     @FXML
+    private Label balanceLabel;
+
+   /* @FXML
     void handleChangeName(ActionEvent event) {
         model.getTag().setName("Nagy József");
         model.getTag().setMotherName("Kissné Erzsébet");
@@ -38,7 +43,7 @@ public class FXMLSceneController {
         alert.setHeaderText("Nincs több felhasználó!");
         alert.setContentText("Kérésed sajnos átmenetileg nem végrehajtható!");
         alert.showAndWait();
-    }
+    }*/
 
     private void refreshUI() {
         motherLabel.setText("" + model.getTag().getMotherName());
@@ -48,14 +53,14 @@ public class FXMLSceneController {
 
     @FXML
     void handleLoadButtonPushed(ActionEvent event) {
-        nameLabel.textProperty().bind(model.getTag().nameProperty());
+        nameLabel.textProperty().bind(model.getTag().usernameProperty());
         refreshUI();
     }
-
     @FXML
-    void handleButtonPushed(){
-        System.out.println("Megnyomtal egy gombot! :)");
-        if (helloLabel.getText().equals("fekete")) helloLabel.setText("fehér");
-        else helloLabel.setText("fekete");
+    boolean login()
+    {
+        System.out.println(username.getText());
+        System.out.println(password.getText());
+        return true;
     }
 }
