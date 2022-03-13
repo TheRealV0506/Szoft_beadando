@@ -3,7 +3,13 @@ package hu.unideb.inf;
 import hu.unideb.inf.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class FXMLSceneController {
     private Model model;
@@ -13,10 +19,10 @@ public class FXMLSceneController {
     }
 
     @FXML
-    private Label username;
+    private TextField username;
 
     @FXML
-    private Label password;
+    private TextField password;
 
     @FXML
     private Label birthDayLabel;
@@ -33,18 +39,6 @@ public class FXMLSceneController {
     @FXML
     private Label balanceLabel;
 
-   /* @FXML
-    void handleChangeName(ActionEvent event) {
-        model.getTag().setName("Nagy József");
-        model.getTag().setMotherName("Kissné Erzsébet");
-        model.getTag().setPlaceofbirth("Debrecen");
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("ERROR!");
-        alert.setHeaderText("Nincs több felhasználó!");
-        alert.setContentText("Kérésed sajnos átmenetileg nem végrehajtható!");
-        alert.showAndWait();
-    }*/
-
     private void refreshUI() {
         motherLabel.setText("" + model.getTag().getMotherName());
         placeLabel.setText("" + model.getTag().getPlaceofbirth());
@@ -57,10 +51,8 @@ public class FXMLSceneController {
         refreshUI();
     }
     @FXML
-    boolean login()
+    void handleLoginPressed(ActionEvent event)
     {
-        System.out.println(username.getText());
-        System.out.println(password.getText());
-        return true;
+        MainApp.login(username.getText(), password.getText());
     }
 }

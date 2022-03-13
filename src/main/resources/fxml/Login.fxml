@@ -13,10 +13,10 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="username" layoutX="226.0" layoutY="175.0" onAction="#username" />
-      <TextField fx:id="password" layoutX="226.0" layoutY="243.0" onAction="#password" />
+      <TextField fx:id="username" layoutX="226.0" layoutY="175.0" />
+      <TextField fx:id="password" layoutX="226.0" layoutY="243.0" />
       <Label layoutX="259.0" layoutY="148.0" text="Felhasználónév" />
       <Label layoutX="282.0" layoutY="214.0" prefHeight="17.0" prefWidth="37.0" text="Jelszó" />
-      <Button layoutX="278.0" layoutY="277.0" mnemonicParsing="false" onAction="#login" text="login" />
+      <Button fx:id="login" layoutX="278.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="login" />
    </children>
 </AnchorPane>
