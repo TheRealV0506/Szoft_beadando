@@ -6,7 +6,7 @@ public class Model {
     private Tag tag;
 
     public Model() {
-        this.tag = new Tag("Nagy József", "Kissné Erzsébet", "Debrecen", LocalDate.of(1991,12,03));
+        this.tag = new Tag("Nagy József", "Kissné Erzsébet", "Debrecen", LocalDate.of(1991,12,03), "password");
     }
 
     public Tag getTag() {
