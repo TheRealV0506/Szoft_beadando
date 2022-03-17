@@ -3,15 +3,13 @@ package hu.unideb.inf;
 import hu.unideb.inf.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class FXMLSceneController {
+public class LoginController {
     private Model model;
 
     public void setModel(Model model) {
@@ -51,8 +49,19 @@ public class FXMLSceneController {
         refreshUI();
     }
     @FXML
-    void handleLoginPressed(ActionEvent event)
-    {
-        MainApp.login(username.getText(), password.getText());
+    void handleLoginPressed(ActionEvent event) throws IOException {
+        if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin"))
+        {
+            MainApp m = new MainApp();
+            m.changeScene("/fxml/Homepage.fxml");
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ERROR!");
+            alert.setHeaderText("Sikertelen bejelentkezés!");
+            alert.setContentText("Buzik nem jöhetnek be!");
+            alert.showAndWait();
+        }
     }
 }

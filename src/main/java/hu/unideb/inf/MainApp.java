@@ -6,6 +6,7 @@ import static javafx.application.Application.launch;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
@@ -19,34 +20,22 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
+        System.out.println(loader.hashCode());
         Scene loginScene = new Scene(loader.load());
-        ((FXMLSceneController)loader.getController()).setModel(new Model());
+        ((LoginController)loader.getController()).setModel(new Model());
         stage.setTitle("Bejelentkezés :(");
         stage.setScene(loginScene);
         stage.show();
     }
 
     @FXML
-    static boolean login(String uname, String pw)
+    public void changeScene(String fxmlstring) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Homepage.fxml"));
-        try {
-            Scene loggedIn = new Scene(loader.load());
-            if(uname == "admin" && pw == "admin")
-            {
-                stage.setScene(loggedIn);
-                stage.show();
-                System.out.println("loggedin");
-            }
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("Sikertelen bejelentkezés!");
-            alert.setContentText("Kérésed sajnos átmenetileg nem végrehajtható!");
-            alert.showAndWait();
-        }
-
-        return true;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlstring));
+        //Scene homepage = new Scene(loader.load());
+        //stage.setScene(homepage);
+        //stage.show();
+        stage.getScene().setRoot(loader.load());
     }
 
     /**
