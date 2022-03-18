@@ -6,37 +6,39 @@ import javafx.beans.property.StringProperty;
 import java.time.LocalDate;
 
 public class Tag {
-    private StringProperty name = new SimpleStringProperty();
+    private StringProperty username = new SimpleStringProperty();
     private StringProperty mothername = new SimpleStringProperty();
     private StringProperty placeofbirth = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
     private LocalDate dateOfBirth;
 
-    public Tag(String name, String mothername, String placeofbirth, LocalDate dateOfBirth) {
-        this.name.setValue(name);
+    public Tag(String username, String mothername, String placeofbirth, LocalDate dateOfBirth, String password) {
+        this.username.setValue(username);
         this.mothername.setValue(mothername);
         this.placeofbirth.setValue(placeofbirth);
         this.dateOfBirth = dateOfBirth;
+        this.password.setValue(password);
     }
 
     @Override
     public String toString() {
         return "Felhasználó " +
-                "neve: " + name + '\'' +
+                "neve: " + username + '\'' +
                 ", édesanyja neve: " + mothername +
                 ", születési hely: " + placeofbirth +
                 ", születési dátum: " + dateOfBirth;
     }
 
-    public String getName() {
-        return name.getValue();
+    public String getUsername() {
+        return username.getValue();
     }
 
-    public void setName(String name) {
-        this.name.setValue(name);
+    public void setUsername(String username) {
+        this.username.setValue(username);
     }
 
-    public StringProperty nameProperty(){
-        return name;
+    public StringProperty usernameProperty(){
+        return username;
     }
 
     public String getMotherName() {

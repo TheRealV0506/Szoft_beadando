@@ -3,39 +3,48 @@ package hu.unideb.inf;
 import hu.unideb.inf.model.Model;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class MainApp extends Application {
 
+    public Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/FXMLScene.fxml"));
-        Scene scene = new Scene(loader.load());
-        ((FXMLSceneController)loader.getController()).setModel(new Model());
-        stage.setTitle("Felhasználó regisztrálás");
-        stage.setScene(scene);
+        Platform.setImplicitExit(false);
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
+        System.out.println(loader.hashCode());
+        Scene loginScene = new Scene(loader.load());
+        ((LoginController)loader.getController()).setModel(new Model());
+        stage.setTitle("Bejelentkezés");
+        stage.setScene(loginScene);
         stage.show();
-        /*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();*/
     }
 
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
+
+    @FXML
+    public void changeScene(String fxmlstring) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(fxmlstring));
+        Scene homepage = new Scene(loader.load());
+        stage.setScene(homepage);
+        stage.show();
+        stage.getScene().setRoot(loader.load());
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
