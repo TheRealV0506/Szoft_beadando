@@ -33,7 +33,7 @@
                   <Insets left="25.0" top="30.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bolder; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: white;" text="Regisztráció">
+            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bolder;" text="Regisztráció">
                <HBox.margin>
                   <Insets left="25.0" top="30.0" />
                </HBox.margin>

@@ -971,9 +971,43 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="285" parent="284" name="name">
-      <DataType>varchar(20)|0s</DataType>
+    <column id="285" parent="284" name="id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>1</Position>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
+    <column id="286" parent="284" name="fullName">
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="287" parent="284" name="username">
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="288" parent="284" name="pword">
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="289" parent="284" name="email">
+      <DataType>varchar(40)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="290" parent="284" name="balance">
+      <DataType>int|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="291" parent="284" name="dateOfBirth">
+      <DataType>date|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <key id="292" parent="284" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>
