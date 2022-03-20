@@ -1,23 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/images/LoginBackground.jpg');" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.LoginController">
    <children>
-      <Label layoutX="247.0" layoutY="70.0" text="Bejelentkezés" fx:id="bejelentkezes">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="username" layoutX="226.0" layoutY="175.0" />
-      <PasswordField fx:id="password" layoutX="226.0" layoutY="243.0" />
-      <Label layoutX="259.0" layoutY="148.0" text="Felhasználónév" />
-      <Label layoutX="282.0" layoutY="214.0" prefHeight="17.0" prefWidth="37.0" text="Jelszó" />
-      <Button fx:id="login" layoutX="278.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="login" />
+      <ImageView fitHeight="467.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/LoginBackground.jpg" />
+         </image>
+      </ImageView>
+      <HBox prefHeight="67.0" prefWidth="200.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 2.4em;" text="Maxi Kakao KFT." />
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="350.0" prefHeight="100.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-weight: bolder; -fx-text-fill: white; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: white;" text="Bejelentkezés">
+               <HBox.margin>
+                  <Insets left="25.0" top="30.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bolder; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: white;" text="Regisztráció">
+               <HBox.margin>
+                  <Insets left="25.0" top="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="175.0" layoutY="153.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.topAnchor="153.0">
+         <children>
+            <TextField fx:id="username" promptText="Felhasználónév" styleClass="LoginBoxes">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="password" promptText="Jelszó" styleClass="LoginBoxes">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </PasswordField>
+         </children>
+      </VBox>
+      <Button fx:id="login" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="Bejelentkezés" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="300.0" />
    </children>
 </AnchorPane>
