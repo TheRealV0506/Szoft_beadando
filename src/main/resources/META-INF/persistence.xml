@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="TestPersistence" transaction-type="RESOURCE_LOCAL">
+        <class>entity.UsersEntity</class>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://casinousers.cc4aqqhwcjpf.us-east-2.rds.amazonaws.com:4200/CasinoUsers" />
+            <property name="hibernate.connection.user" value="admin" />
+            <property name="hibernate.connection.password" value="Hatalmasnegerfasz47" />
+            <property name="hibernate.show_sql" value="false" />
+        </properties>
+    </persistence-unit>
+</persistence>

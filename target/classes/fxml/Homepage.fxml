@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 
-<<<<<<< Updated upstream
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.HamepageController">
-=======
 <?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/images/cas.jpg')bg;" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> Stashed changes
    <children>
-      <Label layoutX="229.0" layoutY="86.0" prefHeight="17.0" prefWidth="141.0" text="Big Gay Man Logged In" />
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/LoginBackground.jpg" />
+         </image>
+      </ImageView>
    </children>
-<<<<<<< Updated upstream
-=======
    <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
       <image>
          <Image url="@../images/LoginBackground.jpg" />
@@ -41,5 +44,4 @@
          </Label>
       </children>
    </HBox>
->>>>>>> Stashed changes
 </AnchorPane>
