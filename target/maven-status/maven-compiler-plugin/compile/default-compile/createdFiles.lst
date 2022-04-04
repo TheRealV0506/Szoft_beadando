@@ -1,8 +1,0 @@
-hu\unideb\inf\model\User.class
-hu\unideb\inf\Main.class
-hu\unideb\inf\RegistrationController.class
-entity\UsersEntity.class
-hu\unideb\inf\MainApp.class
-hu\unideb\inf\LoginController.class
-hu\unideb\inf\HomepageController.class
-hu\unideb\inf\HibernateConnector.class

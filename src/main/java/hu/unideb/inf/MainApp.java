@@ -1,13 +1,9 @@
 package hu.unideb.inf;
 
 import javafx.application.Application;
-<<<<<<< Updated upstream
-import static javafx.application.Application.launch;
 
 import javafx.fxml.FXML;
-=======
 import javafx.event.ActionEvent;
->>>>>>> Stashed changes
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,12 +21,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
         System.out.println(loader.hashCode());
         Scene loginScene = new Scene(loader.load());
-<<<<<<< Updated upstream
-        ((LoginController)loader.getController()).setModel(new Model());
-        stage.setTitle("Bejelentkezés :(");
-=======
         stage.setTitle("Maxi Kakao Casino");
->>>>>>> Stashed changes
         stage.setScene(loginScene);
         stage.show();
     }
@@ -44,18 +35,7 @@ public class MainApp extends Application {
         //stage.show();
         stage.getScene().setRoot(loader.load());
     }
-<<<<<<< Updated upstream
 
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
-=======
->>>>>>> Stashed changes
     public static void main(String[] args) {
         launch(args);
     }
