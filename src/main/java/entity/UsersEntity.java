@@ -1,9 +1,11 @@
 package entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -87,32 +89,7 @@ public class UsersEntity {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-/*
-    public UsersEntity(String username, String fullName, String email, LocalDate dateOfBirth, String password, Integer balance) {
-        this.setUsername(username);
-        this.setFullName(fullName);
-        this.setEmail(email);
-        this.setDateOfBirth(Date.valueOf(dateOfBirth));
-        this.setPword(password);
-        this.setBalance(balance);
-    }
 
-    public UsersEntity(String username, String fullName, String email, LocalDate dateOfBirth, String password) {
-        this.setUsername(username);
-        this.setFullName(fullName);
-        this.setEmail(email);
-        this.setDateOfBirth(Date.valueOf(dateOfBirth));
-        this.setPword(password);
-        this.setBalance(10000);
-    }
-    public UsersEntity(String username, String fullName, String email, String password) {
-        this.setUsername(username);
-        this.setFullName(fullName);
-        this.setEmail(email);
-        this.setDateOfBirth(Date.valueOf(LocalDate.now()));
-        this.setPword(password);
-        this.setBalance(10000);
-    }*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,95 +1,51 @@
 package hu.unideb.inf;
 
-<<<<<<< Updated upstream
-import hu.unideb.inf.model.Model;
+import entity.MailboxEntity;
+import entity.UsersEntity;
+import hu.unideb.inf.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-=======
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
->>>>>>> Stashed changes
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
-    private Model model;
 
-<<<<<<< Updated upstream
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
-=======
->>>>>>> Stashed changes
     @FXML
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
-    @FXML
-    private Label birthDayLabel;
+    Utilities u = new Utilities();
+    public static UsersEntity currentUser;
+    public static List<MailboxEntity> currentMailbox = new ArrayList<MailboxEntity>();
 
-    @FXML
-    private Label motherLabel;
-
-    @FXML
-    private Label placeLabel;
-
-    @FXML
-    private Label nameLabel;
-
-<<<<<<< Updated upstream
-    @FXML
-    private Label balanceLabel;
-
-    private void refreshUI() {
-        motherLabel.setText("" + model.getTag().getMotherName());
-        placeLabel.setText("" + model.getTag().getPlaceofbirth());
-        birthDayLabel.setText(model.getTag().getDateOfBirth().toString());
-    }
-=======
-    MainApp m = new MainApp();
->>>>>>> Stashed changes
-
-    @FXML
-    void handleLoadButtonPushed(ActionEvent event) {
-        nameLabel.textProperty().bind(model.getTag().usernameProperty());
-        refreshUI();
-    }
     @FXML
     void handleLoginPressed(ActionEvent event) throws IOException {
-        if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin"))
-        {
-<<<<<<< Updated upstream
-            MainApp m = new MainApp();
-            m.changeScene("/fxml/Homepage.fxml");
-=======
-            m.changeScene("/fxml/Homepage.fxml", event);
->>>>>>> Stashed changes
-        }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("Sikertelen bejelentkezés!");
-            alert.setContentText("Buzik nem jöhetnek be!");
-            alert.showAndWait();
-        }
+        MainApp.users = HibernateConnector.getUsers();
+        MainApp.mailboxes = HibernateConnector.getMailboxes();
+        for (UsersEntity user : MainApp.users)
+            if (username.getText().toString().equals(user.getUsername()) && password.getText().toString().equals(user.getPword()))
+            {
+                currentUser = user;
+                for (MailboxEntity mailbox : MainApp.mailboxes)
+                    if (mailbox.getUserId() == currentUser.getId())
+                        currentMailbox.add(mailbox);
+                u.changeScene("/fxml/Homepage.fxml", event);
+                return;
+            }
+
+        Utilities.throwNotification("Sikertelen bejelentkezés!", "Hibás felhasználónév vagy jelszó!", Alert.AlertType.ERROR);
     }
-<<<<<<< Updated upstream
-=======
 
     @FXML
     private void handleToRegistration(ActionEvent event) throws IOException
     {
-        m.changeScene("/fxml/Registration.fxml", event);
+        u.changeScene("/fxml/Registration.fxml", event);
     }
-
->>>>>>> Stashed changes
 }

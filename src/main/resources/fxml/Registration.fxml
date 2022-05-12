@@ -30,14 +30,14 @@
         </HBox>
         <HBox layoutX="350.0" prefHeight="100.0" prefWidth="250.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#handleToLogin" styleClass="LoginRegistrationSwitch" text="Bejelentkezés">
+                <Button mnemonicParsing="false" onAction="#handleToLogin" styleClass="LoginRegistrationSwitch" stylesheets="@../styles/Styles.css" text="Bejelentkezés">
                     <HBox.margin>
-                        <Insets left="25.0" top="30.0" />
+                        <Insets top="30.0" />
                     </HBox.margin>
                 </Button>
                 <Button mnemonicParsing="false" stylesheets="@../styles/Styles.css" text="Regisztráció">
                     <HBox.margin>
-                        <Insets left="25.0" top="30.0" />
+                        <Insets left="5.0" top="30.0" />
                     </HBox.margin>
                <styleClass>
                   <String fx:value="LoginRegistrationSelected" />
@@ -75,7 +75,7 @@
             </DatePicker>
               <Button fx:id="register" mnemonicParsing="false" onAction="#handleRegistrationPressed" text="Regisztráció">
                <VBox.margin>
-                  <Insets left="55.0" top="40.0" />
+                  <Insets left="45.0" top="40.0" />
                </VBox.margin>
             </Button>
             </children>

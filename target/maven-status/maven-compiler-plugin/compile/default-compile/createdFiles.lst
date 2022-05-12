@@ -1,0 +1,13 @@
+hu\unideb\inf\model\User.class
+hu\unideb\inf\Main.class
+hu\unideb\inf\ProfileController.class
+entity\MailboxEntity.class
+hu\unideb\inf\Utilities.class
+hu\unideb\inf\RegistrationController.class
+entity\UsersEntity.class
+hu\unideb\inf\MainApp.class
+hu\unideb\inf\LoginController.class
+hu\unideb\inf\MainApp$ShutDownTask.class
+hu\unideb\inf\HomepageController.class
+hu\unideb\inf\HibernateConnector.class
+hu\unideb\inf\MailboxController.class

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/images/LoginBackground.jpg');" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.LoginController">
    <children>
       <ImageView fitHeight="467.0" fitWidth="600.0" pickOnBounds="true">
          <image>
@@ -31,7 +31,7 @@
          <children>
             <Button mnemonicParsing="false" stylesheets="@../styles/Styles.css" text="Bejelentkezés">
                <HBox.margin>
-                  <Insets left="25.0" top="30.0" />
+                  <Insets top="30.0" />
                </HBox.margin>
                <styleClass>
                   <String fx:value="LoginRegistrationSwitch" />
@@ -40,25 +40,25 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#handleToRegistration" styleClass="LoginRegistrationSwitch" stylesheets="@../styles/Styles.css" text="Regisztráció">
                <HBox.margin>
-                  <Insets left="25.0" top="30.0" />
+                  <Insets left="5.0" top="30.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
       <VBox layoutX="175.0" layoutY="153.0" prefHeight="200.0" prefWidth="250.0" AnchorPane.topAnchor="153.0">
          <children>
-            <TextField fx:id="username" promptText="Felhasználónév" styleClass="LoginBoxes">
+            <TextField fx:id="username" promptText="Felhasználónév" styleClass="LoginBoxes" stylesheets="@../styles/Styles.css">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField fx:id="password" promptText="Jelszó" styleClass="LoginBoxes">
+            <PasswordField fx:id="password" promptText="Jelszó" styleClass="LoginBoxes" stylesheets="@../styles/Styles.css">
                <VBox.margin>
                   <Insets top="25.0" />
                </VBox.margin>
             </PasswordField>
          </children>
       </VBox>
-      <Button fx:id="login" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="Bejelentkezés" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="300.0" />
+      <Button fx:id="login" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" onAction="#handleLoginPressed" prefHeight="56.0" prefWidth="250.0" styleClass="LoginRegistrationSelected" stylesheets="@../styles/Styles.css" text="Bejelentkezés" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="300.0" />
    </children>
 </AnchorPane>

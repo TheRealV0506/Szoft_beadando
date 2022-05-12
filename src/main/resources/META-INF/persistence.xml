@@ -6,8 +6,8 @@
         <class>entity.UsersEntity</class>
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://casinousers.cc4aqqhwcjpf.us-east-2.rds.amazonaws.com:4200/CasinoUsers" />
-            <property name="hibernate.connection.user" value="admin" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/CasinoUsers" />
+            <property name="hibernate.connection.user" value="root" />
             <property name="hibernate.connection.password" value="Hatalmasnegerfasz47" />
             <property name="hibernate.show_sql" value="false" />
         </properties>

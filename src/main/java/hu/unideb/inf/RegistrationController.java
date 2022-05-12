@@ -1,5 +1,6 @@
 package hu.unideb.inf;
 
+import com.mysql.cj.log.Log;
 import entity.UsersEntity;
 import hu.unideb.inf.model.User;
 import javafx.event.ActionEvent;
@@ -30,13 +31,12 @@ public class RegistrationController
     @FXML
     private DatePicker birthDate;
 
-    MainApp m = new MainApp();
-    HomepageController h = new HomepageController();
+    Utilities u = new Utilities();
 
     @FXML
     private void handleToLogin(ActionEvent event) throws IOException
     {
-        m.changeScene("/fxml/Login.fxml", event);
+        u.changeScene("/fxml/Login.fxml", event);
     }
 
     @FXML
@@ -44,6 +44,13 @@ public class RegistrationController
     {
         if (!fullName.getText().equals("") && !username.getText().equals("") && !email.getText().equals("") && !password.getText().equals("") && birthDate.getValue() != null)
         {
+            for (UsersEntity u : MainApp.users)
+                if (u.getUsername().equals(username.getText()))
+                {
+                    Utilities.throwNotification("Sikertelen regisztráció!", "Ezzel a felhasználónévvel már van regisztálva felhasználó!", Alert.AlertType.ERROR);
+                    return;
+                }
+
             UsersEntity user = new UsersEntity();
             user.setFullName(fullName.getText());
             user.setUsername(username.getText());
@@ -51,16 +58,15 @@ public class RegistrationController
             user.setPword(password.getText());
             user.setDateOfBirth(Date.valueOf(birthDate.getValue()));
             user.setBalance(10000);
+            LoginController.currentUser = user;
+            MainApp.users.add(LoginController.currentUser);
             HibernateConnector.persistData(user);
-            m.changeScene("/fxml/Homepage.fxml", event);
-            h.passUser(user);
+            u.changeScene("/fxml/Homepage.fxml", event);
+            //h.passUser(user);
         }
         else
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Sikertelen regisztráció!");
-            alert.setContentText("Minden mező kitöltése kötelező!");
-            alert.showAndWait();
+            Utilities.throwNotification("Sikertelen regisztráció!", "Minden mező kitöltése kötelező!", Alert.AlertType.ERROR);
         }
     }
 }
