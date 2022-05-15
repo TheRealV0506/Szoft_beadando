@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.DiceController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/LoginBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="diceImage" fitHeight="150.0" fitWidth="200.0" layoutX="76.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/dice/dice1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="rollButton" layoutX="375.0" layoutY="128.0" mnemonicParsing="false" onAction="#handleRoll" styleClass="HomepageButton" text="Dobás" />
+      <Label layoutX="286.0" layoutY="254.0" text="Tét:" />
+      <TextField fx:id="betsize" layoutX="226.0" layoutY="280.0" />
+      <RadioButton contentDisplay="TOP" layoutX="180.0" layoutY="330.0" mnemonicParsing="false" text="1" toggleGroup="$choice" fx:id="b1" onAction="#getSelected">
+      </RadioButton>
+      <RadioButton contentDisplay="TOP" layoutX="220.0" layoutY="330.0" mnemonicParsing="false" text="2" toggleGroup="$choice" fx:id="b2" onAction="#getSelected"/>
+      <RadioButton contentDisplay="TOP" layoutX="260.0" layoutY="330.0" mnemonicParsing="false" text="3" toggleGroup="$choice" fx:id="b3" onAction="#getSelected"/>
+      <RadioButton contentDisplay="TOP" layoutX="300.0" layoutY="330.0" mnemonicParsing="false" text="4" toggleGroup="$choice" fx:id="b4" onAction="#getSelected"/>
+      <RadioButton contentDisplay="TOP" layoutX="340.0" layoutY="330.0" mnemonicParsing="false" text="5" toggleGroup="$choice" fx:id="b5" onAction="#getSelected"/>
+      <RadioButton contentDisplay="TOP" layoutX="380.0" layoutY="330.0" mnemonicParsing="false" text="6" toggleGroup="$choice" fx:id="b6" onAction="#getSelected"/>
+      <Label layoutX="375.0" layoutY="77.0" text="Egyenleg:" />
+      <Label fx:id="balance" layoutX="440.0" layoutY="77.0" prefHeight="17.0" prefWidth="140.0" text="\%BALANCE%" />
+   </children>
+   <Button fx:id="back" layoutX="458.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleBack" stylesheets="@../styles/Styles.css" text="Vissza" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <styleClass>
+         <String fx:value="button" />
+         <String fx:value="LoginRegistrationSwitch" />
+         <String fx:value="LoginRegistrationSelected" />
+      </styleClass>
+   </Button>
+</AnchorPane>

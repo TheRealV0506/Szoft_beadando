@@ -1,0 +1,76 @@
+.label, .radio-button
+{
+    -fx-text-fill: white;
+}
+.LoginBoxes
+{
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-font-weight: bolder;
+}
+.DatePicker
+{
+    -fx-background-color: transparent;
+}
+.LoginRegistrationSwitch
+{
+    -fx-background-color : transparent;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 1.2em;
+    -fx-pref-width: 115px;
+}
+.LoginRegistrationSwitch:hover
+{
+    -fx-text-fill: gray;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: gray;
+}
+.LoginRegistrationSelected
+{
+    -fx-font-size: 1.2em;
+    -fx-pref-width: 115px;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: white;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.HomepageButton
+{
+    -fx-pref-width: 167px;
+    -fx-pref-height: 65px;
+    -fx-background-insets: 0;
+    -fx-font-size: 1.3em;
+    -fx-text-fill: white;
+    -fx-background-image: url('/images/HomepageButton.jpg');
+}
+.ProfileLabel
+{
+    -fx-text-fill: white;
+    -fx-font-size: 1.2em;
+}
+#login, #register
+{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-pref-width: 150px;
+}
+#login:hover, #register:hover
+{
+    -fx-text-fill: gray;
+    -fx-border-color: gray;
+}
+#passwordChange
+{
+    -fx-background-image: url('/images/HomepageButton.jpg');
+    -fx-background-insets: 0;
+    -fx-font-size: 1.3em;
+    -fx-text-fill: white;
+}
+

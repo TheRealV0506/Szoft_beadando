@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.ProfileController">
+    <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+        <image>
+            <Image url="@../images/LoginBackground.jpg" />
+        </image>
+    </ImageView>
+    <HBox prefHeight="67.0" prefWidth="200.0">
+        <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bolder; -fx-font-size: 2.4em;" text="Profil" />
+        </children>
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+        </padding>
+    </HBox>
+    <Button fx:id="back" layoutX="458.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleBack" stylesheets="@../styles/Styles.css" text="Vissza" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+        <styleClass>
+            <String fx:value="button" />
+            <String fx:value="LoginRegistrationSwitch" />
+            <String fx:value="LoginRegistrationSelected" />
+        </styleClass>
+    </Button>
+   <GridPane layoutX="174.0" layoutY="89.0" prefHeight="150.0" prefWidth="252.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+         <Label styleClass="ProfileLabel" stylesheets="@../styles/Styles.css" text="Teljes Név: " />
+         <Label layoutX="10.0" layoutY="17.0" styleClass="ProfileLabel" stylesheets="@../styles/Styles.css" text="Felhasználónév: " GridPane.rowIndex="1" />
+         <Label styleClass="ProfileLabel" stylesheets="@../styles/Styles.css" text="E-mail cím: " GridPane.rowIndex="2" />
+         <Label styleClass="ProfileLabel" text="Születési idő: " GridPane.rowIndex="3" />
+         <Label styleClass="ProfileLabel" text="Egyenleg: " GridPane.rowIndex="4" />
+         <Label fx:id="FullName" styleClass="ProfileLabel" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
+         <Label fx:id="Username" styleClass="ProfileLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Label fx:id="Email" styleClass="ProfileLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Label fx:id="DateOfBirth" styleClass="ProfileLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <Label fx:id="Balance" styleClass="ProfileLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      </children>
+   </GridPane>
+   <Button id="passwordChange" layoutX="212.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleChangePassword" prefHeight="34.0" prefWidth="176.0" stylesheets="@../styles/Styles.css" text="Jelszó változtatás" />
+</AnchorPane>
