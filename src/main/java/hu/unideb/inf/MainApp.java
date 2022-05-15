@@ -1,42 +1,48 @@
 package hu.unideb.inf;
 
-import hu.unideb.inf.model.Model;
+import entity.MailboxEntity;
+import entity.UsersEntity;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.List;
 
 public class MainApp extends Application {
 
+    public static Stage stage;
+    public static List<UsersEntity> users =  HibernateConnector.getUsers();
+    public static List<MailboxEntity> mailboxes =  HibernateConnector.getMailboxes();
+    public static String currentMailboxString;
+
     @Override
     public void start(Stage stage) throws Exception {
-        HibernateConnector.persistData();
-        //Platform.setImplicitExit(false);
         FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/Login.fxml"));
         Scene loginScene = new Scene(loader.load());
-        ((LoginController)loader.getController()).setModel(new Model());
-        stage.setTitle("Bejelentkezés");
+        stage.setTitle("Maxi Kakao Casino");
         stage.setScene(loginScene);
+        stage.setResizable(false);
         stage.show();
+        ShutDownTask shutDownTask = new ShutDownTask();
+        Runtime.getRuntime().addShutdownHook(shutDownTask);
     }
 
-    public void changeScene(String fxmlstring, ActionEvent event) throws IOException
-    {
-        Parent home = (Parent) FXMLLoader.load(getClass().getResource(fxmlstring));
-        Scene scene = new Scene(home);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private static class ShutDownTask extends Thread {
+
+        @Override
+        public void run()
+        {
+            HibernateConnector.updateUser(LoginController.currentUser);
+            HibernateConnector.close();
+        }
+
     }
 
 }

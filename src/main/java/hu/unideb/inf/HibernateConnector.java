@@ -1,33 +1,83 @@
 package hu.unideb.inf;
 
+import entity.MailboxEntity;
 import entity.UsersEntity;
-import hu.unideb.inf.model.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 public class HibernateConnector {
-    public static void persistData() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TestPersistence");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TestPersistence");
+    static EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public static void persistData(UsersEntity user)
+    {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-
-            UsersEntity testuser = new UsersEntity();
-            testuser.setUsername("hibernate");
-            testuser.setPword("hibernate");
-            testuser.setFullName("hibernate");
-            entityManager.persist(testuser);
-
+            entityManager.persist(user);
             transaction.commit();
-        } finally {
-            if (transaction.isActive()) {
+        }catch (Exception e)
+        {
+            if(transaction.isActive())
+            {
                 transaction.rollback();
             }
-            entityManager.close();
-            entityManagerFactory.close();
         }
+    }
+    public static void persistMessages(MailboxEntity mbox)
+    {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(mbox);
+        transaction.commit();
+    }
+    public static List<UsersEntity> getUsers()
+    {
+        TypedQuery<UsersEntity> query = entityManager.createQuery(
+                "SELECT u FROM UsersEntity u ", UsersEntity.class);
+        List<UsersEntity> queryResult = query.getResultList();
+
+        return queryResult;
+    }
+    public static List<MailboxEntity> getMailboxes()
+    {
+        TypedQuery<MailboxEntity> query = entityManager.createQuery(
+                "SELECT m FROM MailboxEntity m ", MailboxEntity.class);
+        List<MailboxEntity> queryResult = query.getResultList();
+
+        return queryResult;
+    }
+
+    public static void deleteUser()
+    {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.remove(LoginController.currentUser);
+            entityManager.getTransaction().commit();
+            MainApp.users.remove(LoginController.currentUser);
+        } catch (Exception e)
+        {
+
+        }
+    }
+    public static void updateUser(UsersEntity u)
+    {
+        try {
+            MainApp.users.add(u);
+            MainApp.users.remove(LoginController.currentUser);
+            deleteUser();
+            entityManager.getTransaction().begin();
+            entityManager.merge(u);
+            entityManager.getTransaction().commit();
+        } catch (Exception e)
+        {
+
+        }
+    }
+
+    public static void close()
+    {
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }

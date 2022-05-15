@@ -9,9 +9,5 @@
         <module name="Beadando" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Beadando" target="11" />
-      <module name="StudentsRegister2" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,27 +1,18 @@
 package hu.unideb.inf;
 
-import com.sun.javafx.charts.Legend;
-import hu.unideb.inf.model.Model;
+import entity.MailboxEntity;
+import entity.UsersEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
-
-    //public static Stage home;
 
     @FXML
     private TextField username;
@@ -29,24 +20,31 @@ public class LoginController {
     @FXML
     private PasswordField password;
 
+    Utilities u = new Utilities();
+    public static UsersEntity currentUser;
+    public static List<MailboxEntity> currentMailbox = new ArrayList<MailboxEntity>();
 
     @FXML
-    public void handleLoginPressed(ActionEvent event) throws IOException {
-        if(username.getText().equals("admin") && password.getText().equals("admin"))
-        {
-            MainApp m = new MainApp();
-            m.changeScene("/fxml/Homepage.fxml", event);
-        }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ERROR!");
-            alert.setHeaderText("Sikertelen bejelentkezés!");
-            alert.setContentText("Hibás felhasználónév vagy jelszó!");
-            alert.showAndWait();
-        }
+    void handleLoginPressed(ActionEvent event) throws IOException {
+        MainApp.users = HibernateConnector.getUsers();
+        MainApp.mailboxes = HibernateConnector.getMailboxes();
+        for (UsersEntity user : MainApp.users)
+            if (username.getText().toString().equals(user.getUsername()) && password.getText().toString().equals(user.getPword()))
+            {
+                currentUser = user;
+                for (MailboxEntity mailbox : MainApp.mailboxes)
+                    if (mailbox.getUserId() == currentUser.getId())
+                        currentMailbox.add(mailbox);
+                u.changeScene("/fxml/Homepage.fxml", event);
+                return;
+            }
+
+        Utilities.throwNotification("Sikertelen bejelentkezés!", "Hibás felhasználónév vagy jelszó!", Alert.AlertType.ERROR);
     }
 
-    public void setModel(Model model) {
+    @FXML
+    private void handleToRegistration(ActionEvent event) throws IOException
+    {
+        u.changeScene("/fxml/Registration.fxml", event);
     }
 }

@@ -1,8 +1,11 @@
 package entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -48,7 +51,7 @@ public class UsersEntity {
     }
 
     public String getUsername() {
-        return username;
+            return username;
     }
 
     public void setUsername(String username) {
